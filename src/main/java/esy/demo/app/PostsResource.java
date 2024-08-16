@@ -6,24 +6,24 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import lombok.RequiredArgsConstructor;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import java.time.LocalDate;
 
-@Path("/hello")
-public class GreetingResource {
+@Path("/api/posts")
+public class PostsResource {
 
     private final PostsApi postsApi;
 
     @Inject
-    public GreetingResource(@RestClient final PostsApi postsApi) {
+    public PostsResource(@RestClient final PostsApi postsApi) {
         this.postsApi = postsApi;
     }
 
     @GET
+    @Path("/title")
     @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
+    public String title() {
         final var day = LocalDate.now().getDayOfMonth();
         final var post = postsApi.getPost((long) day);
         return String.format("%d: %s", day, post.getTitle());
