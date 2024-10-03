@@ -14,23 +14,23 @@ import java.util.UUID;
 @Path("/api/gifts")
 public class GiftsResource {
 
-    private final GiftsRepository giftsRepository;
+    private final GiftRepository giftRepository;
 
     @Inject
-    public GiftsResource(final GiftsRepository giftsRepository) {
-        this.giftsRepository = giftsRepository;
+    public GiftsResource(final GiftRepository giftRepository) {
+        this.giftRepository = giftRepository;
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Gift> getAll() {
-        return giftsRepository.listAll();
+        return giftRepository.listAll();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
     public Optional<Gift> getOne(final UUID id) {
-        return giftsRepository.findByIdOptional(id);
+        return giftRepository.findByIdOptional(id);
     }
 }

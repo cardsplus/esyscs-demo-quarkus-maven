@@ -15,7 +15,8 @@ class PostsResourceTest {
     void title() {
         final var day = LocalDate.now().getDayOfMonth();
         given()
-                .when().get("/api/posts/title")
+                .when()
+                .get("/api/posts/title")
                 .then()
                 .statusCode(200)
                 .body(startsWith(day + ": "));
