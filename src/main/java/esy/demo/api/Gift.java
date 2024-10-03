@@ -8,13 +8,12 @@ import lombok.Getter;
 import java.util.UUID;
 
 @Entity
+@Getter
 public class Gift {
 
     @Id
-    @Getter
     private UUID id;
 
-    @Getter
     @JsonProperty
     private String name;
 }
